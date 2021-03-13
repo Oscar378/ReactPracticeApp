@@ -1,0 +1,706 @@
+:root {
+  --primary: #0A6AB6;
+  --primaryDarker: #00548A;
+  --secondary: #3D8C40;
+  --secondaryDarker: #06661C;
+  --background: #373737;
+  --background2: #1B1B1B;
+  --text: #ffffff;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/src/resources/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Mono';
+  src: url('/src/resources/Roboto-Mono.ttf') format('truetype');
+}
+
+body {
+  background-color: var(--background);
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Roboto', Fallback, sans-serif;
+  letter-spacing: 1px;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+a, a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 55px;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+  left: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Scrollbars End */
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.buttonLayout {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.buttonLayout > * {
+  margin: 10px;
+}
+
+.buttonLayout.scroll {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.buttonLayout.center {
+  justify-content: center;
+}
+
+.buttonLayout.vertical {
+  flex-direction: column;
+}
+
+.buttonLayout.vertical > *:first-child {
+  margin-top: 0;
+}
+
+.buttonLayout.vertical > *:last-child {
+  margin-bottom: 0;
+}
+
+.buttonLayout.vertical.scroll {
+  overflow-y: auto;
+}
+
+.section {
+  margin-top: 25px;
+  background-color: var(--background2);
+  border: 5px solid var(--secondaryDarker);
+}
+
+.sectionHeader {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.header {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--background2);
+  border-bottom: 10px solid var(--secondary);
+}
+
+.header .column {
+  padding: 0 15px;
+}
+
+.header .column.corner {
+  flex: 0 0 110px;
+  max-width: 110px;
+}
+
+.header .column.center {
+  flex-grow: 1;
+}
+
+.header .title {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .title h1 {
+  margin: 0;
+  font-size: clamp(12px, 5.75vw, 80px);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.header .button {
+  text-align: center;
+  background-color: var(--primaryDarker);
+  color: var(--text);
+  padding-top: 10px;
+  margin-top: 15px;
+  font-size: 60px;
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
+}
+
+.header .button:hover {
+  background-color: var(--primary);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.formContainer {
+  color: var(--text);
+}
+
+.formContainer .row div {
+  margin-bottom: 10px;
+}
+
+.mainContainer {
+  height: calc(100% - 120px);
+  padding: 15px;
+}
+
+.mainContainer.mainOrderScreen > .row,
+.mainContainer.mainOrderScreen #colSidePanel,
+.mainContainer.mainOrderScreen #colMainPanel,
+.mainContainer.mainOrderScreen #colTicketPanel,
+.mainContainer.mainModifierScreen > .row,
+.mainContainer.mainModifierScreen #colSidePanel,
+.mainContainer.mainModifierScreen #colMainPanel,
+.mainContainer.mainModifierScreen #colTicketPanel {
+  height: 100%;
+  display: flex;
+}
+
+.mainContainer.mainOrderScreen,
+.mainContainer.mainModifierScreen {
+  padding: 0;
+}
+
+.sidePanel {
+  padding: 5px;
+  margin: 15px 0;
+  width: 100%;
+  background-color: var(--background2);
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.sidePanel .buttonLayout {
+  height: 100%;
+}
+
+.sidePanel .button {
+  margin: 10px;
+  width: calc(50% - 20px);
+  height: calc(20% - 20px);
+}
+
+.sidePanel .button.selected {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+.mainPanel {
+  width: 100%;
+  margin: 15px;
+  height: calc(100% - 30px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-y: scroll;
+}
+
+.mainPanel .button {
+  margin: 10px;
+  width: 150px;
+  height: 100px;
+}
+
+.mainPanel .button.selected {
+  background-color: var(--primary);
+  border: 2px solid #ffffff;
+}
+
+.ticketPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 15px 0;
+  width: 100%;
+  background-color: var(--background2);
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  height: calc(100% - 30px);
+  align-self: center;
+}
+
+.ticketContent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 12px;
+  padding: 5px;
+  width: 100%;
+  height: 80%;
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--text);
+  font-family: 'Roboto-Mono', Fallback, monospace !important;
+}
+
+.ticketHeader {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 4px solid var(--primaryDarker);
+}
+
+.ticketHeader span {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.ticketButtons .buttonLayout {
+  height: 100%;
+}
+
+.ticketItems {
+  overflow-y: scroll;
+  margin-right: -10px;
+  flex-grow: 1;
+  max-height: calc(100% - 130px);
+}
+
+.ticketItem {
+  display: flex;
+  border: 2px solid transparent;
+  border-bottom: 2px solid var(--primaryDarker);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.ticketItem.modifier,
+.ticketItem.addon,
+.ticketItem.message {
+  border-bottom: none;
+  margin-top: initial;
+  padding-left: 25px;
+  cursor: initial;
+}
+
+.ticketItem > span:first-child {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.ticketItem > span:last-child {
+  font-weight: bold;
+}
+
+.ticketItem.modifier > span:last-child,
+.ticketItem.addon > span:last-child,
+.ticketItem.message > span:last-child {
+  font-weight: normal;
+}
+
+.ticketItem.selected {
+  border-bottom: 2px solid var(--secondaryDarker);
+  background-color: var(--secondaryDarker);
+  color: var(--text);
+}
+
+.ticketItem.modifier,
+.ticketItem.addon,
+.ticketItem.message {
+  border-bottom: none;
+}
+
+.ticketTotals > div {
+  border-bottom: 2px solid var(--secondaryDarker);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.ticketTotals > div > span {
+  float: right;
+}
+
+.ticketPanel .buttonLayout .button {
+  margin: 5px;
+}
+
+.ticketPanel .ticketButtons .button {
+  font-size: 20px;
+  width: calc(25% - 10px) !important;
+}
+
+.button {
+  text-align: center;
+  color: var(--text);
+  background-color: var(--primaryDarker);
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  max-height: 100%;
+  padding: 10px;
+}
+
+.button::after {
+  content: "";
+  padding-bottom: 75%;
+}
+
+.button.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--background2);
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.button.secondary {
+  background-color: var(--secondaryDarker);
+}
+
+.button:hover {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+.button.secondary:hover {
+  background-color: var(--secondary);
+}
+
+.button.square::after {
+  padding-bottom: 100%;
+}
+
+.button.mini {
+  font-size: 14px;
+  padding: 8px;
+  width: 100px;
+}
+
+.button.mini i {
+  font-size: 20px;
+}
+
+.button.mini.square {
+  width: 100px;
+}
+
+.button.normal {
+  font-size: 20px;
+  padding: 10px;
+  width: 150px;
+}
+
+.button.normal.square {
+  width: 100px;
+}
+
+.dropdownContainer {
+  position: absolute;
+  background-color: var(--background2);
+  color: var(--text);
+  padding: 5px;
+  width: 100%;
+}
+
+.dropdownContainer > div {
+  background-color: var(--background2);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdownContainer > div:hover {
+  background-color: var(--background);
+}
+
+.textInput {
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 15px;
+}
+
+.textInput input {
+  width: calc(100% - 50px);
+  height: 50px;
+  outline: none;
+  border: none;
+  float: left;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px 0 0 5px;
+  background-color: var(--background2);
+  color: var(--text);
+}
+
+.textInput.noButton input {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.textInput .button {
+  float: right;
+  width: 50px;
+  height: 50px;
+  padding-top: 15px;
+  border-radius: 0 5px 5px 0;
+  margin: 0;
+  min-height: 0;
+  min-width: 0;
+}
+
+.textInput.address {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.list {
+  margin-bottom: 50px;
+  min-height: 50px;
+  height: calc(100vh - 250px);
+  border-radius: 5px;
+  color: var(--text);
+  overflow-y: auto;
+}
+
+.list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mainListItem {
+  background-color: var(--background2);
+  border: 2px solid #474747;
+  padding: 5px 20px;
+  font-size: 24px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mainListItem.selected {
+  background-color: var(--primaryDarker);
+  color: var(--text);
+}
+
+.mainListItem.listHeader {
+  font-size: 16px;
+  cursor: default;
+  background-color: var(--secondaryDarker);
+}
+
+.mainListItem > span {
+  float: right;
+}
+
+.dialog {
+  display: none;
+  visibility: hidden;
+  opacity: 0%;
+  position: fixed;
+  left: 25%;
+  top: 300px;
+  width: 50%;
+  min-height: 150px;
+  background-color: var(--background2);
+  border-color: #ffffff;
+  border: 1px;
+  border-radius: 5px;
+}
+
+.dialog2 {
+  display: none;
+  visibility: hidden;
+  opacity: 0%;
+  position: fixed;
+  left: 25%;
+  top: 300px;
+  width: 50%;
+  min-height: 150px;
+  background-color: var(--background2);
+  border-color: #ffffff;
+  border: 1px;
+  border-radius: 5px;
+  padding: 1%;
+}
+
+.dateSlot {
+  color: var(--secondaryDarker);
+  text-align: center;
+  width: 14%;
+}
+
+.line {
+  color: var(--secondaryDarker);
+}
+
+.current-date {
+  color: var(--secondaryDarker);
+}
+
+.textIn-put {
+  color: var(--background2);
+    background-color: var(--background);
+    width: 100%;
+    height: 90px;
+}
+
+.spacing {
+  height: 25px;
+}
+
+.pac-container {
+  background-color: var(--background2);
+}
+
+.pac-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 30px;
+  text-align: left;
+  border-bottom: none;
+  background-color: transparent;
+  color: var(--text) !important;
+  border: 2px solid #ffffff;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 24px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pac-item:hover {
+  background-color: transparent;
+}
+
+.pac-item-query {
+  font-size: 24px;
+  color: var(--text);
+}
+
+.textareabox {
+  font-size: 25px;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border-radius: 10px;
+  color: var(--text);
+  border: 3px solid var(--background2);
+  padding: 10px 20px;
+  resize: none;
+}
+
+@media (max-width: 1100px) {
+  .sidePanel .button {
+    width: calc(100% - 20px);
+  }
+
+  .ticketPanel .ticketButtons .button {
+    width: calc(50% - 10px) !important;
+    max-height: calc(50% - 10px) !important;
+  }
+
+  .ticketContent {
+    height: 75%;
+  }
+
+  .ticketButtons {
+    height: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidePanel .buttonLayout {
+    flex-wrap: nowrap;
+    width: fit-content;
+    padding-right: 5px;
+  }
+
+  .sidePanel .button {
+    min-width: calc(20vw - 35px);
+    height: calc(100% - 20px);
+  }
+
+  .mainPanel {
+    margin: 15px 0;
+  }
+
+  .mainPanel .buttonLayout {
+    width: 100%;
+  }
+
+  .mainPanel .buttonLayout .button {
+    width: calc(50% - 20px);
+  }
+
+  .mainContainer.mainOrderScreen #colSidePanel,
+  .mainContainer.mainModifierScreen #colSidePanel {
+    height: 25%;
+  }
+
+  .mainContainer.mainOrderScreen #colMainPanel,
+  .mainContainer.mainOrderScreen #colTicketPanel,
+  .mainContainer.mainModifierScreen #colMainPanel,
+  .mainContainer.mainModifierScreen #colTicketPanel {
+    height: 75%;
+  }
+}
