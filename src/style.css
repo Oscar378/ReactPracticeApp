@@ -1,3 +1,9 @@
+.homeText {
+  width: 100%;
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
+}
 :root {
   --primary: #0A6AB6;
   --primaryDarker: #00548A;
